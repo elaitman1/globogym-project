@@ -1,0 +1,6 @@
+<h1>Routines</h1>
+
+<% @routines.each do |routine| %>
+<h2><ul><li><%= link_to routine.exercise_id, routine_path(routine) %></li></ul></h2>
+<%= link_to 'Remove :)',routine, method: :delete %>
+<% end %>

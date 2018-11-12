@@ -1,0 +1,18 @@
+<h1>Create Your Routine</h1>
+
+<%= form_for @routine do |f| %>
+<ul>
+  <li><%= f.collection_select :user_id, User.all, :id, :name %></li>
+  <li><%= f.collection_select :exercise_id, Exercise.all, :id, :name %></li>
+<br>
+<br>
+<li><%= f.label :set %></li>
+<%= f.text_field :set %>
+<br>
+<br>
+<li><%= f.label :rep %></li>
+<%= f.text_field :rep %>
+<br>
+<br>
+<li><%= f.submit %></li></ul>
+<% end %>

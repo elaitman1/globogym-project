@@ -1,0 +1,10 @@
+<h1>Create Your Exercise</h1>
+
+<%= form_for @exercise do |f| %>
+<ul><li><%= f.label :name %></li>
+<%= f.text_field :name %>
+<br>
+<br>
+<li><%= f.submit %></li></ul>
+
+<% end %>
