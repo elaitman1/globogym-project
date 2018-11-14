@@ -1,4 +1,6 @@
 <h1> About Your Exercise </h1>
 <ul>
-<li><h2>Name: <%= @exercise.name.capitalize %>(s)</h2></li>
+<li><h2>Name: <%= link_to @exercise.name.capitalize, user_path %>
+</h2></li>
+
 </ul>

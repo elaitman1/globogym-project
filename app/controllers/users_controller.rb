@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-
-  before_action :find_user, only: [:show, :update, :edit, :destroy]
-
-  def index
-  @users  = User.all
-  end
+  before_action :find_user, only: [:show, :destroy, :edit]
+  skip_before_action :authorized, only: [:new, :create]
 
   def show
 
@@ -13,9 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      redirect_to user_path(@user)
+      login_user(@user) #same as above; delegated to ApplicationController
+      redirect_to @user
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
     end
   end
@@ -26,7 +23,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@user)
       else
         flash[:errors] = @user.errors.full_messages
-        redirect_to new_user_path
+        redirect_to user_path(@user)
       end
   end
 
@@ -40,13 +37,13 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path
+    redirect_to new_user_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :weight, :mood)
+    params.require(:user).permit(:name,:username, :password, :weight, :mood)
   end
 
   def find_user

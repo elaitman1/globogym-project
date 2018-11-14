@@ -12,7 +12,8 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.create(exercise_params)
     if @exercise.valid?
-      redirect_to exercise_path(@exercise)
+      # redirect_to user_path(current_user) (once sessions are set up)
+      redirect_to @exercise
     else
       flash[:error] = @exercise.errors.full_messages
       redirect_to new_exercise_path
@@ -45,7 +46,7 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:name, :set, :rep, :duration)
+    params.require(:exercise).permit(:name)
   end
 
   def find_exercise
