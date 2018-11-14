@@ -8,7 +8,7 @@
 
 User.destroy_all
 
-User.create(name:"Ted", weight:"180", mood:"upset")
+u1 = User.create(name:"Ted", weight:"180", mood:"upset")
 
 ####Badges####
 
@@ -17,3 +17,23 @@ Badge.destroy_all
 Badge.create(name:"WELL BALANCED", description:"100 reps of any exercise in a day!", image:"url")
 Badge.create(name:"PUSHY", description:"100 pushups in a day!", image:"url")
 Badge.create(name:"GET LOW", description:"100 squats in a day!", image:"url")
+
+Exercise.destroy_all
+
+Exercise.create(name:"Pushups")
+Exercise.create(name:"Situps")
+Exercise.create(name:"Jumping Jacks")
+Exercise.create(name:"Squats")
+Exercise.create(name:"Lunges")
+
+Routine.destroy_all
+
+Routine.create(user_id: 1, exercise_id: 2, reps: 25)
+Routine.create(user_id: 1, exercise_id: 3, reps: 30)
+Routine.create(user_id: 1, exercise_id: 4, reps: 15)
+Routine.create(user_id: 1, exercise_id: 5, reps: 20)
+
+
+
+
+# Routine.create(user_id:u1.id, exercise_id: e1.id, reps: 10 )

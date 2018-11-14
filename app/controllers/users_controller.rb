@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :update, :edit, :destroy]
 
   def index
-  @users  = User.all
+    @users = User.all
   end
 
   def show
@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
+      @user.instantiate_badges
+      flash[:notice] = "New user created successfully!"
       redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages

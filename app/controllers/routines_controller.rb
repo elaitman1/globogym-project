@@ -13,6 +13,7 @@ class RoutinesController < ApplicationController
   def create
     @routine = Routine.create(routine_params)
     if @routine.valid?
+      UserBadge.unlocks(@routine)
       redirect_to routine_path(@routine)
     else
       flash[:error] = @routine.errors.full_messages
@@ -46,7 +47,7 @@ class RoutinesController < ApplicationController
   private
 
   def routine_params
-    params.require(:routine).permit(:name, :sets, :reps)
+    params.require(:routine).permit(:user_id, :exercise_id, :reps)
   end
 
   def find_routine
