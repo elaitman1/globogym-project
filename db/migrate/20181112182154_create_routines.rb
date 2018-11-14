@@ -4,7 +4,7 @@ class CreateRoutines < ActiveRecord::Migration[5.2]
 
       t.integer :user_id
       t.integer :exercise_id
-      t.integer :rep
+      t.integer :reps
 
       t.timestamps
     end

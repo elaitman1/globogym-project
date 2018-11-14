@@ -1,35 +1,63 @@
-<h1> About </h1>
-<!-- User picture -->
-<!-- absence of profile picture gallery of pictures to choose as profile pic -->
-<h2><%= flash[:notice] %></h2>
-<ul>
-<li><%= @user.name %></li>
-<br>
-<li><%= @user.weight %></li>
-<br>
-<li><%= @user.mood %></li>
-</ul>
-<h2>Today's Goal</h2>
-  <% @user.routines.each do |routine| %>
-  <h3>Today's Exercise(s):<li> <%= link_to routine.exercise.name.capitalize, exercise_path(routine.exercise)  %></li></h3>
-  <h3>Today's Rep(s): <li><%= routine[:rep] %></li></h3>
+<div>
+  <% if flash[:notice] %>
+  <%= flash[:notice] %>
   <% end %>
 
+<h1> <%= @user.name %> </h1>
+  <!-- User picture -->
+  <!-- absence of profile picture gallery of pictures to choose as profile pic -->
+  <ul>
+  <li><%= @user.name %></li>
+  <br>
+  <li><%= @user.weight %></li>
+  <br>
+  <li><%= @user.mood %></li>
+  </ul>
+</div>
 
-<h2>Progress</h2>
+<div>
+  <h2>Today's Exercises</h2>
+
+  <% @user.exercises.uniq.each do |e| %>
+   <div class="today_exercises"><%= e.name %><br>
+    Reps: <%= @user.todays_reps(e.id) %></div>
+  <% end %>
+</div>
+
+  <!-- showing todays exercise and reps -->
+  <!-- take out sets and iterate through todays date and grab all of the reps under the exercise id and show the updated rep number with exercise name -->
+<div>
+  <h2>Progress</h2>
   <!-- This is where we will put exercise progress -->
   <!-- last 7 days and lifetime, iterate through all routines and filter for anything that is within the last seven days -->
   <!-- daily goals met -->
   <!-- pushups will go through all users routines, match for exercise type (pushup) and will tally up total amount, or iterate for just last seven days - these would exist in the model as methods -->
-<h2>Badges</h2>
-  <!-- Iterate through and display unlocked badges  -->
-  <%=
-  if current_user.id == @user.id
-    button_to 'Delete This Profile', user_path(@user), { method: :delete }
-  end
-%>
-<%=
-if current_user.id == @user.id
-  link_to 'Edit Profile', edit_user_path(@user)
-end
-%>
+
+<!-- select exercise -->
+
+<% @user.exercises.uniq.each do |e| %>
+ <div class="progress"><h3><%= e.name %></h3>
+  <p>Last 7 days: <%= @user.weekly_reps(e.id) %></p>
+  <p>Lifetime: <%= @user.lifetime_reps(e.id) %></p></div>
+<% end %>
+</div>
+
+<div>
+<h2>Earned Badges</h2>
+
+ <!-- Iterates through and displays unlocked badges  -->
+
+  <% @user.badges_earned.each do |ub| %>
+    <% badge = Badge.find(ub.badge_id) %>
+    <div><%= link_to badge.name, badge_path(badge) %></div>
+  <% end %>
+
+<h2>Locked Badges</h2>
+
+<!-- Iterates through and displays locked badges -->
+
+  <% @user.badges_locked.each do |ub| %>
+    <% badge = Badge.find(ub.badge_id) %>
+    <div><%= link_to badge.name, badge_path(badge) %></div>
+  <% end %>
+</div>

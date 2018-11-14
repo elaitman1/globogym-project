@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      login_user(@user) #same as above; delegated to ApplicationController
-      redirect_to @user
+      @user.instantiate_badges
+      flash[:notice] = "New user created successfully!"
+      redirect_to user_path(@user)
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
