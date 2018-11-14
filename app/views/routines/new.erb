@@ -2,7 +2,10 @@
 
 <%= form_for @routine do |f| %>
 <ul>
-  <li><%= f.collection_select :user_id, User.all, :id, :name %></li>
+  <% if current_user %>
+    <%= current_user.username %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
   <li><%= f.collection_select :exercise_id, Exercise.all, :id, :name %></li>
 <br>
 <br>

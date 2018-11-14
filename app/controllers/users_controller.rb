@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :destroy, :edit]
   skip_before_action :authorized, only: [:new, :create]
 
+  def index
+    @users = User.all
+    @user_reps = User.top10(1)
+  end
+
   def show
 
   end

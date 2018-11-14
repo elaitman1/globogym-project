@@ -5,14 +5,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="ui pointing menu">
+     <a class="active item">
+       <%= link_to "Home", user_path(session[:user_id]) %>
+     </a>
+     <a class="item">
+       <%= link_to "Leaderboard", users_path %>
+     </a>
+     <a class="item">
+       Badges
+     </a>
+    </div>
+    <!-- INSERT NAVBAR HERE -->
+    <!-- LEADERBOARD / USER / EXERCISE MENU / MY BADGES -->
+    <!-- USE SEMANTIC UI TO DO NAVBAR -->
     <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
     <% end %>
     <%= yield %>
+    <!-- insert logout here -->
+    <br>
+    <br>
+    <%= link_to 'logout', logout_path, method: :delete %>
   </body>
 </html>

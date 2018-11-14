@@ -1,0 +1,7 @@
+<h1>LEADERBOARD</h1>
+
+<% @user_reps.each do |e| %>
+  <% user = User.find_by(id: e[0]) %>
+  <%= user.name %> - <%= e[1] %>
+  <br>
+<% end %>

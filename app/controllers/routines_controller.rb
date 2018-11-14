@@ -14,7 +14,8 @@ class RoutinesController < ApplicationController
     @routine = Routine.create(routine_params)
     if @routine.valid?
       UserBadge.unlocks(@routine)
-      redirect_to routine_path(@routine)
+      @user = User.find_by(id: params["routine"][:user_id])
+      redirect_to user_path(@user)
     else
       flash[:error] = @routine.errors.full_messages
       redirect_to new_routine_path

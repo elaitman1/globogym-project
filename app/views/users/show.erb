@@ -1,7 +1,4 @@
 <div>
-  <% if flash[:notice] %>
-  <%= flash[:notice] %>
-  <% end %>
 
 <h1> <%= @user.name %> </h1>
   <!-- User picture -->
@@ -13,10 +10,19 @@
   <br>
   <li><%= @user.mood %></li>
   </ul>
+
+  <%= link_to "SEE LEADERBOARD", user_path(@user) %>
+
 </div>
+
+<br>
+<br>
+<br>
 
 <div>
   <h2>Today's Exercises</h2>
+
+  <%= link_to "LOG NEW EXERCISE", new_routine_path %>
 
   <% @user.exercises.uniq.each do |e| %>
    <div class="today_exercises"><%= e.name %><br>
@@ -24,8 +30,10 @@
   <% end %>
 </div>
 
-  <!-- showing todays exercise and reps -->
-  <!-- take out sets and iterate through todays date and grab all of the reps under the exercise id and show the updated rep number with exercise name -->
+<br>
+<br>
+<br>
+
 <div>
   <h2>Progress</h2>
   <!-- This is where we will put exercise progress -->
@@ -41,6 +49,16 @@
   <p>Lifetime: <%= @user.lifetime_reps(e.id) %></p></div>
 <% end %>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div>
 <h2>Earned Badges</h2>
