@@ -5,39 +5,67 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <!-- semantic link -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <!-- google fonts link -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower%7CRubik" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="ui pointing menu">
-     <a class="active item">
-       <%= link_to "Home", user_path(session[:user_id]) %>
-     </a>
-     <a class="item">
-       <%= link_to "Leaderboard", users_path %>
-     </a>
-     <a class="item">
-       Badges
-     </a>
+
+    <!-- semantic grid start here -->
+  <div class="ui grid">
+    <div class="three wide column"></div>
+    <div class="ten wide column">
+
+      <!-- navbar starts here -->
+      <div>
+
+       <button class="ui button">
+        <% if session[:user_id] == nil %>
+          <%= link_to "Profile", login_path %>
+        <% else %>
+          <%= link_to "Profile", user_path(session[:user_id]) %>
+        <% end %>
+       </button>
+
+       <button class="ui button">
+         <%= link_to "Leaderboard", users_path %>
+       </button>
+
+       <button class="ui button">
+         <%= link_to "Badges", users_path %>
+       </button>
+
+       <button class="ui button">
+         <%= link_to 'Log Out', logout_path, method: :delete %>
+       </button>
+
+      </div>
+      <!-- navbar ends here -->
+
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
+
+      <%= yield %>
+
+
+
     </div>
-    <!-- INSERT NAVBAR HERE -->
-    <!-- LEADERBOARD / USER / EXERCISE MENU / MY BADGES -->
-    <!-- USE SEMANTIC UI TO DO NAVBAR -->
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-    <%= yield %>
-    <!-- insert logout here -->
-    <br>
-    <br>
-    <%= link_to 'logout', logout_path, method: :delete %>
+    <div class="three wide column"></div>
+  </div>
+  <!-- semantic grid ends here -->
+
+
   </body>
 </html>

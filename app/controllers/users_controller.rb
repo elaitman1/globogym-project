@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @user_reps = User.top10(1)
   end
 
   def show

@@ -1,25 +1,19 @@
-<div>
+<div class="category_div">
 
 <h1> <%= @user.name %> </h1>
   <!-- User picture -->
   <!-- absence of profile picture gallery of pictures to choose as profile pic -->
   <ul>
-  <li><%= @user.name %></li>
+  <li>Name: <%= @user.name %></li>
   <br>
-  <li><%= @user.weight %></li>
+  <li>Weight: <%= @user.weight %> lbs</li>
   <br>
-  <li><%= @user.mood %></li>
+  <li>Current mood: <%= @user.mood %></li>
   </ul>
-
-  <%= link_to "SEE LEADERBOARD", user_path(@user) %>
 
 </div>
 
-<br>
-<br>
-<br>
-
-<div>
+<div class="category_div">
   <h2>Today's Exercises</h2>
 
   <%= link_to "LOG NEW EXERCISE", new_routine_path %>
@@ -28,13 +22,10 @@
    <div class="today_exercises"><%= e.name %><br>
     Reps: <%= @user.todays_reps(e.id) %></div>
   <% end %>
+  <div style="clear:both"></div>
 </div>
 
-<br>
-<br>
-<br>
-
-<div>
+<div class="category_div">
   <h2>Progress</h2>
   <!-- This is where we will put exercise progress -->
   <!-- last 7 days and lifetime, iterate through all routines and filter for anything that is within the last seven days -->
@@ -43,24 +34,15 @@
 
 <!-- select exercise -->
 
-<% @user.exercises.uniq.each do |e| %>
- <div class="progress"><h3><%= e.name %></h3>
-  <p>Last 7 days: <%= @user.weekly_reps(e.id) %></p>
-  <p>Lifetime: <%= @user.lifetime_reps(e.id) %></p></div>
-<% end %>
+  <% @user.exercises.uniq.each do |e| %>
+   <div class="progress"><h3><%= e.name %></h3>
+    <p>Last 7 days: <%= @user.weekly_reps(e.id) %></p>
+    <p>Lifetime: <%= @user.lifetime_reps(e.id) %></p></div>
+  <% end %>
+  <div style="clear:both"></div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<div>
+<div class="category_div">
 <h2>Earned Badges</h2>
 
  <!-- Iterates through and displays unlocked badges  -->
@@ -76,6 +58,7 @@
 
   <% @user.badges_locked.each do |ub| %>
     <% badge = Badge.find(ub.badge_id) %>
-    <div><%= link_to badge.name, badge_path(badge) %></div>
+    <div class="badges"><%= link_to badge.name, badge_path(badge) %></div>
   <% end %>
+  <div style="clear:both"></div>
 </div>

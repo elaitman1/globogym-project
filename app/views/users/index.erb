@@ -1,7 +1,17 @@
-<h1>LEADERBOARD</h1>
+<h1>Top 10 Leaderboards</h1>
 
-<% @user_reps.each do |e| %>
-  <% user = User.find_by(id: e[0]) %>
-  <%= user.name %> - <%= e[1] %>
-  <br>
+<div id="top10container">
+<% Exercise.all.map { |e| e.id }.each do |id| %>
+
+  <div class="top10">
+  <h3><%= Exercise.find_by(id: id).name %></h3>
+        <ol>
+        <% Routine.top10(id).each do |rank| %>
+          <% user = User.find_by(id: rank[0]) %>
+          <li><%= user.name %> - <%= rank[1] %></li>
+          <% end %>
+        </ol>
+  </div>
 <% end %>
+<div style="clear:both"></div>
+</div>

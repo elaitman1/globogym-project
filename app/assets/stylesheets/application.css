@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+h1, h2, li, h3, a {
+    font-family: 'Rubik', sans-serif;
+  }
+
+body {
+    background-image: url("marion-michele-447867-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }

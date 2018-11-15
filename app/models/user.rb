@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :exercises, through: :routines
   has_many :user_badges
   has_many :badges, through: :user_badges
+  has_many :friends, through: :friendships, foreign_key: 'user_id'
 
   validates_length_of :password, :username, :minimum => 6
   has_secure_password
@@ -53,17 +54,18 @@ class User < ApplicationRecord
     self.user_badges.select {|b| b.unlocked == false}
   end
 
-  def self.top10(exercise_id)
-    user_hash = {}
-    pushups = Routine.all.select {|r| r.exercise_id == exercise_id}
-    pushups.each do |routine|
-      if user_hash[routine.user_id] == nil
-        user_hash[routine.user_id] = routine.reps
-      else
-        user_hash[routine.user_id] += routine.reps
-      end
-    end
-    sorted_array = user_hash.sort_by { |k,v| v }.reverse
-  end
+  # def self.top10(exercise_name)
+  #   user_hash = {}
+  #   id = Exercise.find_by(name: exercise_name)
+  #   exercise = Routine.all.select {|r| r.exercise_id == exercise_id}
+  #   exercise.each do |routine|
+  #     if user_hash[routine.user_id] == nil
+  #       user_hash[routine.user_id] = routine.reps
+  #     else
+  #       user_hash[routine.user_id] += routine.reps
+  #     end
+  #   end
+  #   sorted_array = user_hash.sort_by { |k,v| v }.reverse
+  # end
 
-end
+end #class User
