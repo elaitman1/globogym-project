@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+  h1, h2, li, h3, a {
+    font-family: 'Rubik', sans-serif;
+  }

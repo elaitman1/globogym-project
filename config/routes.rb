@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :user_badges, only: [:index, :show]
   resources :badges, only: [:index, :show]
 
-
-  get '/login', to: 'sessions#new', as: :login
-  post '/login', to: 'sessions#create'
+  # resources :sessions(can do this as well only instructor made custome login urls)
+  get '/login',  to: 'sessions#new', as: :login
+   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :logout
 
 

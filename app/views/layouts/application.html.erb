@@ -11,7 +11,7 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Rubik" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,7 +19,12 @@
   <body>
     <div class="ui pointing menu">
      <a class="active item">
-       <%= link_to "Home", user_path(session[:user_id]) %>
+
+         <% if session[:user_id] == nil %>
+          <%= link_to "Profile", login_path %>
+        <% else %>
+       <%= link_to "Profile", user_path(session[:user_id]) %>
+       <% end %>
      </a>
      <a class="item">
        <%= link_to "Leaderboard", users_path %>
