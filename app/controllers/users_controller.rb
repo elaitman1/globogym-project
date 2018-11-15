@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    byebug
     @user = User.create(user_params)
     if @user.valid?
       @user.instantiate_badges
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name,:username, :password, :weight, :mood)
+    params.require(:user).permit(:name,:username, :password, :weight, :mood, :image)
   end
 
   def find_user

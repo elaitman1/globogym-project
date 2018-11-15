@@ -1,6 +1,6 @@
 <div class="category_div">
 
-<h1> <%= @user.name %> </h1>
+
   <!-- User picture -->
   <!-- absence of profile picture gallery of pictures to choose as profile pic -->
   <ul>
@@ -10,6 +10,7 @@
   <br>
   <li>Current mood: <%= @user.mood %></li>
   </ul>
+  <div id="profile-pic"><%= image_tag(@user.image.url, alt: 'Image') if @user.image? %></div>
 
 </div>
 
