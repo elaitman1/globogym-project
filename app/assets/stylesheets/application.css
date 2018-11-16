@@ -28,9 +28,10 @@
  }
 
  #flash {
-   padding: 10px 0 0 10px;
+   padding: 20px 0 0 10px;
    font-family: 'Rubik', sans-serif;
    color: #ddd;
+   text-align: center;
  }
 
 h1, h2, h3, li, a, p, label {
