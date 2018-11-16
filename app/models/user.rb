@@ -54,6 +54,29 @@ class User < ApplicationRecord
     self.user_badges.select {|b| b.unlocked == false}
   end
 
+  def rank_array #helper method creates array in rank order
+    user_hash = {}
+    User.all.each do |user|
+      total_reps = 0
+      user.routines.each {|r| total_reps += r.reps}
+      user_hash[user.id] = total_reps
+    end
+    sorted_array = user_hash.sort_by { |k,v| v }.reverse
+  end
+
+  def find_rank #displays the user rank as a number
+    final = 0
+    sorted_array = rank_array
+    sorted_array.each do |ranking|
+      if self.id == ranking[0]
+        final = (sorted_array.find_index(ranking) + 1)
+      end
+    end
+    final
+  end
+
+
+
   # def self.top10(exercise_name)
   #   user_hash = {}
   #   id = Exercise.find_by(name: exercise_name)

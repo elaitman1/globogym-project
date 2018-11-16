@@ -15,8 +15,11 @@ u1 = User.create(name:"Ted", weight:"180", mood:"upset")
 Badge.destroy_all
 
 Badge.create(name:"WELL BALANCED", description:"100 reps of any exercise in a day!", image:"url")
-Badge.create(name:"PUSHY", description:"100 pushups in a day!", image:"url")
-Badge.create(name:"GET LOW", description:"100 squats in a day!", image:"url")
+Badge.create(name:"Pushup Master", description:"50 reps of pushups!", image:"url") 
+Badge.create(name:"Situp Master", description:"50 reps of situps!", image:"url")
+Badge.create(name:"Jumping Jack Master", description:"50 reps of jumping jacks!", image:"url")
+Badge.create(name:"Lunge Master", description:"50 reps of lunges!", image:"url")
+Badge.create(name:"Squat Master", description:"50 reps of squats!", image:"url")
 
 Exercise.destroy_all
 

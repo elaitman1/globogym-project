@@ -1,9 +1,10 @@
-<h1>Top 10 Leaderboards</h1>
+<div id="leaderboard_header">
+    <h1>Top 10 Leaderboards</h1>
+</div>
 
 <div id="top10container">
 <% Exercise.all.map { |e| e.id }.each do |id| %>
-
-  <div class="top10">
+  <div class="top10item">
   <h3><%= Exercise.find_by(id: id).name %></h3>
         <ol>
         <% Routine.top10(id).each do |rank| %>
@@ -13,5 +14,5 @@
         </ol>
   </div>
 <% end %>
-<div style="clear:both"></div>
+  <div style="clear:both"></div>
 </div>

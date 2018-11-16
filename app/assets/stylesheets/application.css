@@ -13,15 +13,35 @@
  *= require_tree .
  *= require_self
  */
-/* div img {
-  height: 100px;
-} */
-h1, h2, li, h3, a {
+
+ #container {
+   background-color: #444;
+   opacity: 0.93;
+ }
+
+ #navbar {
+   padding: 5px 0px 0px 5px;
+ }
+
+ #nav_right {
+   float: right;
+ }
+
+ #flash {
+   padding: 10px 0 0 10px;
+   font-family: 'Rubik', sans-serif;
+   color: #ddd;
+ }
+
+h1, h2, h3, li, a, p {
     font-family: 'Rubik', sans-serif;
+    color: #ddd;
   }
-  body {
-      background-image: url("marion-michele-447867-unsplash.jpg");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
-    }
+
+/* body {
+    background-image: url("marion-michele-447867-unsplash-1.jpg");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+  } */
