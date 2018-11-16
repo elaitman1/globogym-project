@@ -10,11 +10,11 @@
 // }
 
 body {
-    background-image: url("marion-michele-447867-unsplash.jpg");
-    background-position: fixed;
+    background-image: url("ivan-torres-379714-unsplash-1.jpg") !important;
+    background-position: left;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100%;
+    background-size: cover;
+    // background-attachment: fixed;
   }
 
 h3 {
@@ -53,6 +53,10 @@ h3 {
 
 #first_div {
   padding: 25px 0 0 0;
+}
+
+#last_div{
+  padding: 0 0 100px 0;
 }
 
 .category_div {
@@ -104,4 +108,16 @@ h3 {
 
 .rank_p {
   margin: 25px 0 0 0;
+}
+
+//USER NEW
+
+#new_wrapper{
+  padding: 50px 0 100px 0;
+  text-align: center;
+}
+
+#ui_wrapper {
+  padding: 0 250px 0 250px;
+
 }

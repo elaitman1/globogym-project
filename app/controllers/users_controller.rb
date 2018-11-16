@@ -11,12 +11,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
     @user = User.create(user_params)
     if @user.valid?
       @user.instantiate_badges
-      flash[:notice] = "New user created successfully!"
-      redirect_to user_path(@user)
+      flash[:notice] = "New user created successfully! Please log in!"
+      redirect_to login_path
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name,:username, :password, :weight, :mood, :image)
+    params.require(:user).permit(:name,:username, :password, :weight, :mood)
   end
 
   def find_user

@@ -10,10 +10,8 @@
 </div>
 <div class="profile">
   <h3>GOAL</h3>
-  <p class="rank_p">lotsa gainz</p>
+  <p class="rank_p"><%= @user.mood %></p>
 </div>
-
-<!-- <div id="profile-pic"><%= #image_tag(@user.image.url, alt: 'Image') if @user.image? %></div> -->
 
 </div>
 
@@ -35,7 +33,7 @@
   <div style="clear:both"></div>
 </div>
 
-<div class="category_div">
+<div class="category_div" id="last_div">
   <h2>Rep Totals</h2>
 
 <!-- select exercise -->
@@ -47,10 +45,5 @@
     <p><em>Lifetime:</em> <span class="reps"><%= @user.lifetime_reps(e.id) %></span></p>
    </div>
   <% end %>
-  <div style="clear:both"></div>
-</div>
-
-<div class="category_div">
-  <!-- where badges used to be -->
   <div style="clear:both"></div>
 </div>

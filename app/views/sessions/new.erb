@@ -1,17 +1,28 @@
+<div id="login_wrapper">
+
 <h1>Login</h1>
 
-<h2><%= flash[:notice] %></h2>
 
-<%= form_tag login_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <br>
-  <br>
-  <div class="ui buttons">
-  <button class="ui button"><%= link_to 'Login' %></button>
-  <% end %>
-  <button class="ui button"><%= link_to "Signup", new_user_path %></button>
+<div id="login_form_wrapper">
+  <div class="ui form">
+    <%= form_tag login_path do %>
+      <%= label_tag :username %>
+      <%= text_field_tag :username %>
+      <br>
+      <br>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+      <br>
+      <br>
+        <%= submit_tag "Login"%>
+      <br>
+    <% end %>
   </div>
+
+  <div id="login_buttons">
+    <div class="ui buttons">
+      <button class="ui inverted primary button"><%= link_to "Not a member? Create new account", new_user_path %></button>
+    </div>
+  </div>
+
+</div>

@@ -90,5 +90,4 @@ class User < ApplicationRecord
   #   end
   #   sorted_array = user_hash.sort_by { |k,v| v }.reverse
   # end
-  # mount_uploader :image, ImageUploader
 end #class User
