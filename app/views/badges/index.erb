@@ -1,7 +1,43 @@
-<h2>Badges</h2>
+<div class="badge_cat_div">
+<h2>Earned Badges</h2>
 
-<ul>
-<% @badges.each do |badge| %>
-  <li><%= link_to badge.name, badge_path(badge) %></li>
-<% end %>
-</ul>
+ <!-- Iterates through and displays unlocked badges  -->
+
+  <% @user.badges_earned.each do |ub| %>
+    <% badge = Badge.find(ub.badge_id) %>
+    <% #byebug %>
+    <div class="unlocked">
+      <div class="image">
+        <%= link_to image_tag(badge.image), badge_path(badge) %>
+      </div>
+      <div class="description">
+        <h3><%= badge.name.upcase %></h3>
+        <p><%= badge.description %></p>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="badge_cat_div">
+<h2>Locked Badges</h2>
+
+<!-- Iterates through and displays locked badges -->
+
+  <% @user.badges_locked.each do |ub| %>
+    <% badge = Badge.find(ub.badge_id) %>
+    <% #byebug %>
+    <div class="locked">
+      <div class="image">
+        <%= link_to image_tag(badge.image), badge_path(badge) %>
+      </div>
+      <div class="description">
+        <h3><%= badge.name.upcase %></h3>
+        <p><%= badge.description %></p>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  <% end %>
+  <div style="clear:both"></div>
+</div>

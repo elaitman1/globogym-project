@@ -27,10 +27,12 @@
     <div class="three wide column"></div>
     <div class="ten wide column">
 
+    <!-- container_div starts here -->
+    <div id="container">
       <!-- navbar starts here -->
-      <div>
+      <div id="navbar">
 
-       <button class="ui button">
+       <button class="ui inverted button">
         <% if session[:user_id] == nil %>
           <%= link_to "Profile", login_path %>
         <% else %>
@@ -38,28 +40,30 @@
         <% end %>
        </button>
 
-       <button class="ui button">
+       <button class="ui inverted button">
          <%= link_to "Leaderboard", users_path %>
        </button>
 
-       <button class="ui button">
-         <%= link_to "Badges", users_path %>
+       <button class="ui inverted button">
+         <%= link_to "Badges", badges_path %>
        </button>
 
-       <button class="ui button">
+       <button class="ui inverted button" id="nav_right">
          <%= link_to 'Log Out', logout_path, method: :delete %>
        </button>
 
       </div>
       <!-- navbar ends here -->
-
+      <div id="flash">
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
+      </div>
 
       <%= yield %>
 
-
+    </div>
+    <!-- container_div ends here -->
 
     </div>
     <div class="three wide column"></div>

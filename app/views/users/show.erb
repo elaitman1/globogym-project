@@ -1,64 +1,54 @@
-<div class="category_div">
+<div class="category_div" id="first_div">
 
 <h1> <%= @user.name %> </h1>
   <!-- User picture -->
   <!-- absence of profile picture gallery of pictures to choose as profile pic -->
-  <ul>
-  <li>Name: <%= @user.name %></li>
-  <br>
-  <li>Weight: <%= @user.weight %> lbs</li>
-  <br>
-  <li>Current mood: <%= @user.mood %></li>
-  </ul>
+
+<div class="profile">
+  <h3>RANK</h3>
+  <p class="rank_p"># <span class="rank"><%= @user.find_rank %></span> in total reps</p>
+</div>
+<div class="profile">
+  <h3>GOAL</h3>
+  <p class="rank_p">lotsa gainz</p>
+</div>
 
 </div>
 
 <div class="category_div">
-  <h2>Today's Exercises</h2>
+  <div style="margin-bottom: 20px;">
+  <h2>Today's Reps</h2>
 
-  <%= link_to "LOG NEW EXERCISE", new_routine_path %>
+  <button class="ui inverted orange button">
+    <%= link_to "LOG NEW EXERCISE", new_routine_path %>
+  </button>
 
+  </div>
   <% @user.exercises.uniq.each do |e| %>
-   <div class="today_exercises"><%= e.name %><br>
-    Reps: <%= @user.todays_reps(e.id) %></div>
+  <div class="exercise_div">
+    <p><%= e.name.upcase %></p>
+    <p><em>Reps:</em>  <span class="reps"><%= @user.todays_reps(e.id) %></span></p>
+  </div>
   <% end %>
   <div style="clear:both"></div>
 </div>
 
 <div class="category_div">
-  <h2>Progress</h2>
-  <!-- This is where we will put exercise progress -->
-  <!-- last 7 days and lifetime, iterate through all routines and filter for anything that is within the last seven days -->
-  <!-- daily goals met -->
-  <!-- pushups will go through all users routines, match for exercise type (pushup) and will tally up total amount, or iterate for just last seven days - these would exist in the model as methods -->
+  <h2>Rep Totals</h2>
 
 <!-- select exercise -->
 
   <% @user.exercises.uniq.each do |e| %>
-   <div class="progress"><h3><%= e.name %></h3>
-    <p>Last 7 days: <%= @user.weekly_reps(e.id) %></p>
-    <p>Lifetime: <%= @user.lifetime_reps(e.id) %></p></div>
+   <div class="exercise_div">
+    <p><%= e.name.upcase %></p>
+    <p><em>7 day:</em> <span class="reps"><%= @user.weekly_reps(e.id) %></span></p>
+    <p><em>Lifetime:</em> <span class="reps"><%= @user.lifetime_reps(e.id) %></span></p>
+   </div>
   <% end %>
   <div style="clear:both"></div>
 </div>
 
 <div class="category_div">
-<h2>Earned Badges</h2>
-
- <!-- Iterates through and displays unlocked badges  -->
-
-  <% @user.badges_earned.each do |ub| %>
-    <% badge = Badge.find(ub.badge_id) %>
-    <div><%= link_to badge.name, badge_path(badge) %></div>
-  <% end %>
-
-<h2>Locked Badges</h2>
-
-<!-- Iterates through and displays locked badges -->
-
-  <% @user.badges_locked.each do |ub| %>
-    <% badge = Badge.find(ub.badge_id) %>
-    <div class="badges"><%= link_to badge.name, badge_path(badge) %></div>
-  <% end %>
+  <!-- where badges used to be -->
   <div style="clear:both"></div>
 </div>

@@ -3,6 +3,7 @@ class BadgesController < ApplicationController
 
   def index
     @badges = Badge.all
+    @user = User.find_by(id: session[:user_id])
   end
 
   def show
