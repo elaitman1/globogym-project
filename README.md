@@ -1,24 +1,6 @@
-# README
+# Project Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Workout App allows you to create workouts, earn badges and get your name on the leaderboard.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Link 
+https://globo-gym-1.herokuapp.com/login
